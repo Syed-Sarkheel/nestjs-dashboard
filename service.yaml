@@ -5,9 +5,10 @@ metadata:
   labels:
     app: nextjs-dashboard
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
     - port: 80
       targetPort: 3000
+      nodePort: 32000
   selector:
     app: nextjs-dashboard

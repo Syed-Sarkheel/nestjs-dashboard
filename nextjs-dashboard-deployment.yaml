@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: nextjs-dashboard
-          image: ${DOCKER_USERNAME}/nextjs-dashboard:latest
+          image: syedsarkheel/nextjs-dashboard:latest
           ports:
             - containerPort: 3000
 ---
