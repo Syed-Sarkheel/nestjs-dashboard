@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextjs-dashboard
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nextjs-dashboard
+  template:
+    metadata:
+      labels:
+        app: nextjs-dashboard
+    spec:
+      containers:
+        - name: nextjs-dashboard
+          image: ${DOCKER_USERNAME}/nextjs-dashboard:latest
+          ports:
+            - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nextjs-dashboard
+spec:
+  selector:
+    app: nextjs-dashboard
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: LoadBalancer
