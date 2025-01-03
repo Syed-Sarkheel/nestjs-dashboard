@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextjs-dashboard
+  labels:
+    app: nextjs-dashboard
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nextjs-dashboard
+  template:
+    metadata:
+      labels:
+        app: nextjs-dashboard
+    spec:
+      containers:
+        - name: nextjs-dashboard
+          image: <your-dockerhub-username>/nextjs-dashboard:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: "production"
